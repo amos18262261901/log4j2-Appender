@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "dtd/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE\} %5p %c{1\}:%L - %m%n" />
+		</layout>
+	</appender>
+	<appender name="filelog_appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/testlog4jxml_all.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="1MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%c:%L)- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 每天生成一个日志文件——襄阳 -->
+	<appender name="filelog_daily_xiangyang" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/xiangyang/jieru_access.log" />
+		<param name="DatePattern" value="''yyyy-MM-dd'.log'" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss/} %-5p] [%t] (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 每天生成一个日志文件——台州 -->
+	<appender name="filelog_daily_taizhou" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/taizhou/jieru_access.log" />
+		<param name="DatePattern" value="''yyyy-MM-dd'.log'" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss/} %-5p] [%t] (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 每天生成一个日志文件——云南 -->
+	<appender name="filelog_daily_yunnan" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/yunnan/jieru_access.log" />
+		<param name="DatePattern" value="''yyyy-MM-dd'.log'" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss/} %-5p] [%t] (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 每天生成一个日志文件——兰州 -->
+	<appender name="filelog_daily_lanzhou" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/yunnan/jieru_access.log" />
+		<param name="DatePattern" value="''yyyy-MM-dd'.log'" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss/} %-5p] [%t] (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 每天生成一个日志文件——all -->
+	<appender name="filelog_daily_all" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/all/jieru_access.log" />
+		<param name="DatePattern" value="''yyyy-MM-dd'.log'" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss/} %-5p] [%t] (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 襄阳loggername -->
+	<logger name="xiangyang" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="filelog_daily_xiangyang" />
+	</logger>
+	
+	<!-- 台州loggername -->
+	<logger name="taizhou" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="filelog_daily_taizhou" />
+	</logger>
+	
+	<!-- 云南loggername -->
+	<logger name="yunnan" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="filelog_daily_yunnan" />
+	</logger>
+	
+	<!-- 兰州loggername -->
+	<logger name="lanzhou" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="filelog_daily_lanzhou" />
+	</logger>
+	
+	<!-- all loggername -->
+	<logger name="all" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="filelog_daily_all" />
+	</logger>
+	
+	<root>
+		<level value="info" />
+		<appender-ref ref="filelog_appender" />
+	</root>
+</log4j:configuration>
